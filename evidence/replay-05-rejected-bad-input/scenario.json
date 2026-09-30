@@ -1,0 +1,12 @@
+{
+  "scenario": "input fails the declared pattern; UI untouched",
+  "tenant": "riverbend",
+  "fault_injected": null,
+  "status": "REJECTED",
+  "code": "INPUT_INVALID",
+  "outputs": {},
+  "recoveries": [],
+  "interventions": [],
+  "warnings": [],
+  "duration_ms": 781
+}

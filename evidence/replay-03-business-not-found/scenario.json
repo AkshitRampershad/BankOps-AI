@@ -1,0 +1,12 @@
+{
+  "scenario": "no such member -> business outcome",
+  "tenant": "riverbend",
+  "fault_injected": null,
+  "status": "BUSINESS_OUTCOME",
+  "code": "RECORD_NOT_FOUND",
+  "outputs": {},
+  "recoveries": [],
+  "interventions": [],
+  "warnings": [],
+  "duration_ms": 1907
+}

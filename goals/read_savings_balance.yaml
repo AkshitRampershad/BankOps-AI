@@ -1,0 +1,17 @@
+# A discovery request: what the model should achieve once, and the contract of the
+# resulting capability. Input values here are examples used during discovery only.
+capability_id: heritage_core.member.read_savings_balance
+title: Read a member's share savings balance
+description: >-
+  Look up a credit union member by member number in Heritage Core and return the current
+  balance of their SHARE SAVINGS account. Read-only.
+tenant: riverbend
+goal: Look up member {{member_id}} and read the current balance of their SHARE SAVINGS account.
+entry: /
+inputs:
+  - name: member_id
+    type: string
+    pattern: '^\d{6}$'
+    classification: pii
+    description: Six-digit member number.
+    value: "100234"

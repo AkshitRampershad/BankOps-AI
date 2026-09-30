@@ -1,0 +1,63 @@
+{
+  "run_id": "replay-20260930T065640Z-b466af",
+  "capability": "heritage_core.member.read_savings_balance",
+  "version": "1.0.0",
+  "digest": "sha256:88e6ca503594609b",
+  "tenant": "lakeside",
+  "status": "SUCCEEDED",
+  "outputs": {
+    "savings_balance": "1234.56"
+  },
+  "outcome": null,
+  "failure": null,
+  "recoveries": [],
+  "interventions": [],
+  "warnings": [
+    "alias 'Balance' -> 'Current Bal'",
+    "alias 'Inquire' -> 'Search'",
+    "alias 'Member Number:' -> 'Account No.:'"
+  ],
+  "steps": [
+    {
+      "step_id": "s01",
+      "action": "click",
+      "status": "ok",
+      "strategy": "role",
+      "fallback": false,
+      "ms": 154,
+      "actor": "automation"
+    },
+    {
+      "step_id": "s02",
+      "action": "fill",
+      "status": "ok",
+      "strategy": "anchored",
+      "fallback": false,
+      "ms": 83,
+      "actor": "automation"
+    },
+    {
+      "step_id": "s03",
+      "action": "click",
+      "status": "ok",
+      "strategy": "role",
+      "fallback": false,
+      "ms": 350,
+      "actor": "automation"
+    },
+    {
+      "step_id": "s04",
+      "action": "extract",
+      "status": "ok",
+      "strategy": "table_cell",
+      "fallback": false,
+      "ms": 56,
+      "actor": "automation"
+    }
+  ],
+  "duration_ms": 1959,
+  "evidence_dir": "/home/user/Computer-Use-Automation-System/runs/_evidence/replay-20260930T065640Z-b466af",
+  "inputs": {
+    "member_id": "\u00abpii\u00bb"
+  }
+}

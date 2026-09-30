@@ -1,0 +1,41 @@
+== frame "banner" url=/banner title="banner"
+[1] cell "HERITAGE CORE RIVERBEND COMMUNITY CREDIT UNION" (row: User: «secret»)
+[2] cell "User: «secret»" (row: HERITAGE CORE RIVERBEND COMMUNITY CREDIT UNION)
+== frame "nav" url=/nav title="nav"
+[3] cell "▸"
+[4] link "Member Inquiry"
+[5] cell "▸"
+[6] link "Transaction History"
+[7] cell "▸"
+[8] link "Reports"
+[9] link "Sign Off"
+== frame "main" url=/hc/MBR0100 title="Member Profile"
+[10] cell "MBR0200" (row: MEMBER PROFILE | HC 4.2.7)
+[11] cell "MEMBER PROFILE" (row: MBR0200 | HC 4.2.7)
+[12] cell "HC 4.2.7" (row: MBR0200 | MEMBER PROFILE)
+[13] cell "Name:" (row: «pii»)
+[14] cell "«pii»" (row: Name:)
+[15] cell "Member No.:" (row: «pii»)
+[16] cell "«pii»" (row: Member No.:)
+[17] cell "SSN:" (row: «pii»)
+[18] cell "«pii»" (row: SSN:)
+[19] cell "Date of Birth:" (row: «pii»)
+[20] cell "«pii»" (row: Date of Birth:)
+[21] cell "Phone:" (row: «pii»)
+[22] cell "«pii»" (row: Phone:)
+[23] cell "Address:" (row: «pii»)
+[24] cell "«pii»" (row: Address:)
+[25] cell "Suffix" (row: Description | Balance | Available)
+[26] cell "Description" (row: Suffix | Balance | Available)
+[27] cell "Balance" (row: Suffix | Description | Available)
+[28] cell "Available" (row: Suffix | Description | Balance)
+[29] cell "S0001" (row: SHARE SAVINGS | 58,002.10 | 58,002.10; col: Suffix)
+[30] cell "SHARE SAVINGS" (row: S0001 | 58,002.10 | 58,002.10; col: Description)
+[31] cell "58,002.10" (row: S0001 | SHARE SAVINGS | 58,002.10; col: Balance)
+[32] cell "58,002.10" (row: S0001 | SHARE SAVINGS | 58,002.10; col: Available)
+[33] cell "L0140" (row: AUTO LOAN | -9,410.77 | 0.00; col: Suffix)
+[34] cell "AUTO LOAN" (row: L0140 | -9,410.77 | 0.00; col: Description)
+[35] cell "-9,410.77" (row: L0140 | AUTO LOAN | 0.00; col: Balance)
+[36] cell "0.00" (row: L0140 | AUTO LOAN | -9,410.77; col: Available)
+[37] button "Open Sub-Account"
+[38] button "New Inquiry"

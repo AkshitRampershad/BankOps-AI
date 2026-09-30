@@ -1,0 +1,93 @@
+{
+  "run_id": "replay-20260930T065702Z-9c671e",
+  "capability": "heritage_core.member.open_sub_account",
+  "version": "1.0.0",
+  "digest": "sha256:f6b94e77f483e9d5",
+  "tenant": "riverbend",
+  "status": "BUSINESS_OUTCOME",
+  "outputs": {},
+  "outcome": {
+    "code": "VALIDATION_ERROR",
+    "message": "The core system rejected the sub-account request.",
+    "detail": "SUB-220 INITIAL DEPOSIT MUST BE BETWEEN 5.00 AND 10,000.00",
+    "step_id": "s08",
+    "rule": "sub_account_invalid"
+  },
+  "failure": null,
+  "recoveries": [],
+  "interventions": [],
+  "warnings": [],
+  "steps": [
+    {
+      "step_id": "s01",
+      "action": "click",
+      "status": "ok",
+      "strategy": "role",
+      "fallback": false,
+      "ms": 190,
+      "actor": "automation"
+    },
+    {
+      "step_id": "s02",
+      "action": "fill",
+      "status": "ok",
+      "strategy": "anchored",
+      "fallback": false,
+      "ms": 83,
+      "actor": "automation"
+    },
+    {
+      "step_id": "s03",
+      "action": "click",
+      "status": "ok",
+      "strategy": "role",
+      "fallback": false,
+      "ms": 327,
+      "actor": "automation"
+    },
+    {
+      "step_id": "s04",
+      "action": "click",
+      "status": "ok",
+      "strategy": "role",
+      "fallback": false,
+      "ms": 321,
+      "actor": "automation"
+    },
+    {
+      "step_id": "s05",
+      "action": "select",
+      "status": "ok",
+      "strategy": "anchored",
+      "fallback": false,
+      "ms": 61,
+      "actor": "automation"
+    },
+    {
+      "step_id": "s06",
+      "action": "fill",
+      "status": "ok",
+      "strategy": "anchored",
+      "fallback": false,
+      "ms": 35,
+      "actor": "automation"
+    },
+    {
+      "step_id": "s07",
+      "action": "fill",
+      "status": "ok",
+      "strategy": "anchored",
+      "fallback": false,
+      "ms": 39,
+      "actor": "automation"
+    }
+  ],
+  "duration_ms": 2530,
+  "evidence_dir": "/home/user/Computer-Use-Automation-System/runs/_evidence/replay-20260930T065702Z-9c671e",
+  "inputs": {
+    "member_id": "\u00abpii\u00bb",
+    "share_type": "HOLIDAY CLUB",
+    "nickname": "Gifts",
+    "initial_deposit": "2.00"
+  }
+}

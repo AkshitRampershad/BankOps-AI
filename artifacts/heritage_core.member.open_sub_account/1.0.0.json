@@ -1,0 +1,478 @@
+{
+  "schema": "cua.capability/v1",
+  "id": "heritage_core.member.open_sub_account",
+  "version": "1.0.0",
+  "status": "draft",
+  "title": "Open a new sub-account for a member",
+  "description": "Open a new share sub-account (holiday club, vacation club or extra savings) for a member with an initial deposit, and return the confirmation number. IRREVERSIBLE: creates the account and posts the deposit.",
+  "app": {
+    "product": "heritage_core",
+    "versions": ">=4.2,<5",
+    "surface": "legacy_web",
+    "entry": "/",
+    "requires_auth": true
+  },
+  "inputs": [
+    {
+      "name": "member_id",
+      "type": "string",
+      "description": "Six-digit member number.",
+      "required": true,
+      "pattern": "^\\d{6}$",
+      "classification": "pii"
+    },
+    {
+      "name": "share_type",
+      "type": "enum",
+      "description": "Share type of the new sub-account.",
+      "required": true,
+      "enum": [
+        "HOLIDAY CLUB",
+        "VACATION CLUB",
+        "EXTRA SAVINGS"
+      ],
+      "classification": "internal"
+    },
+    {
+      "name": "nickname",
+      "type": "string",
+      "description": "Nickname shown on statements.",
+      "required": true,
+      "pattern": "^[A-Za-z0-9 ]{1,20}$",
+      "classification": "internal"
+    },
+    {
+      "name": "initial_deposit",
+      "type": "money",
+      "description": "Initial deposit amount, 5.00 to 10000.00.",
+      "required": true,
+      "classification": "internal"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "confirmation_number",
+      "type": "string",
+      "description": "Confirmation number of the new sub-account",
+      "classification": "internal",
+      "nullable": false
+    }
+  ],
+  "risk": "irreversible",
+  "steps": [
+    {
+      "id": "s01",
+      "intent": "Open the member inquiry screen",
+      "risk": "reversible",
+      "actor": "agent",
+      "expect": {
+        "all_of": [
+          {
+            "kind": "text",
+            "text": "MBR0100",
+            "frame": "main"
+          },
+          {
+            "kind": "text",
+            "text": "MEMBER INQUIRY",
+            "frame": "main"
+          },
+          {
+            "kind": "url",
+            "pattern": "/hc/MBR0100*",
+            "frame": "main"
+          }
+        ],
+        "description": "frame main: MBR0100, MEMBER INQUIRY"
+      },
+      "timeout_ms": 10000,
+      "action": "click",
+      "target": {
+        "frame": "nav",
+        "description": "Member Inquiry",
+        "strategies": [
+          {
+            "kind": "role",
+            "role": "link",
+            "name": "Member Inquiry",
+            "exact": true
+          },
+          {
+            "kind": "text",
+            "text": "Member Inquiry",
+            "exact": true
+          },
+          {
+            "kind": "css",
+            "selector": "html > body:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(1) > td:nth-of-type(1) > a:nth-of-type(1)"
+          }
+        ],
+        "rationale": "primary: role (accessible role+name; survives layout and styling changes); 2 verified fallback(s)"
+      }
+    },
+    {
+      "id": "s02",
+      "intent": "Enter the member number",
+      "risk": "reversible",
+      "actor": "agent",
+      "expect": {
+        "all_of": [],
+        "description": ""
+      },
+      "timeout_ms": 10000,
+      "action": "fill",
+      "target": {
+        "frame": "main",
+        "description": "textbox next to 'Member Number:'",
+        "strategies": [
+          {
+            "kind": "anchored",
+            "role": "textbox",
+            "anchor_text": "Member Number:",
+            "nth": 0
+          },
+          {
+            "kind": "css",
+            "selector": "html > body:nth-of-type(1) > form:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(1) > td:nth-of-type(2) > input:nth-of-type(1)"
+          }
+        ],
+        "rationale": "primary: anchored (unlabelled control anchored to its visible row label); 1 verified fallback(s)"
+      },
+      "value": {
+        "param": "member_id"
+      }
+    },
+    {
+      "id": "s03",
+      "intent": "Run the inquiry",
+      "risk": "reversible",
+      "actor": "agent",
+      "expect": {
+        "all_of": [
+          {
+            "kind": "text",
+            "text": "MBR0200",
+            "frame": "main"
+          },
+          {
+            "kind": "text",
+            "text": "MEMBER PROFILE",
+            "frame": "main"
+          }
+        ],
+        "description": "frame main: MBR0200, MEMBER PROFILE"
+      },
+      "timeout_ms": 10000,
+      "action": "click",
+      "target": {
+        "frame": "main",
+        "description": "Inquire",
+        "strategies": [
+          {
+            "kind": "role",
+            "role": "button",
+            "name": "Inquire",
+            "exact": true
+          },
+          {
+            "kind": "anchored",
+            "role": "button",
+            "anchor_text": "Member Number:",
+            "nth": 0
+          },
+          {
+            "kind": "css",
+            "selector": "html > body:nth-of-type(1) > form:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(1) > td:nth-of-type(3) > input:nth-of-type(1)"
+          }
+        ],
+        "rationale": "primary: role (accessible role+name; survives layout and styling changes); 2 verified fallback(s)"
+      }
+    },
+    {
+      "id": "s04",
+      "intent": "Start opening a sub-account",
+      "risk": "reversible",
+      "actor": "agent",
+      "expect": {
+        "all_of": [
+          {
+            "kind": "text",
+            "text": "SUB0100",
+            "frame": "main"
+          },
+          {
+            "kind": "text",
+            "text": "OPEN SUB-ACCOUNT",
+            "frame": "main"
+          },
+          {
+            "kind": "url",
+            "pattern": "/hc/SUB0100*",
+            "frame": "main"
+          }
+        ],
+        "description": "frame main: SUB0100, OPEN SUB-ACCOUNT"
+      },
+      "timeout_ms": 10000,
+      "action": "click",
+      "target": {
+        "frame": "main",
+        "description": "Open Sub-Account",
+        "strategies": [
+          {
+            "kind": "role",
+            "role": "button",
+            "name": "Open Sub-Account",
+            "exact": true
+          },
+          {
+            "kind": "css",
+            "selector": "html > body:nth-of-type(1) > form:nth-of-type(1) > input:nth-of-type(2)"
+          }
+        ],
+        "rationale": "primary: role (accessible role+name; survives layout and styling changes); 1 verified fallback(s)"
+      }
+    },
+    {
+      "id": "s05",
+      "intent": "Choose the share type",
+      "risk": "reversible",
+      "actor": "agent",
+      "expect": {
+        "all_of": [],
+        "description": ""
+      },
+      "timeout_ms": 10000,
+      "action": "select",
+      "target": {
+        "frame": "main",
+        "description": "combobox next to 'Share Type:'",
+        "strategies": [
+          {
+            "kind": "anchored",
+            "role": "combobox",
+            "anchor_text": "Share Type:",
+            "nth": 0
+          },
+          {
+            "kind": "css",
+            "selector": "html > body:nth-of-type(1) > form:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(2) > td:nth-of-type(2) > select:nth-of-type(1)"
+          }
+        ],
+        "rationale": "primary: anchored (unlabelled control anchored to its visible row label); 1 verified fallback(s)"
+      },
+      "value": {
+        "param": "share_type"
+      }
+    },
+    {
+      "id": "s06",
+      "intent": "Enter the nickname",
+      "risk": "reversible",
+      "actor": "agent",
+      "expect": {
+        "all_of": [],
+        "description": ""
+      },
+      "timeout_ms": 10000,
+      "action": "fill",
+      "target": {
+        "frame": "main",
+        "description": "textbox next to 'Nickname:'",
+        "strategies": [
+          {
+            "kind": "anchored",
+            "role": "textbox",
+            "anchor_text": "Nickname:",
+            "nth": 0
+          },
+          {
+            "kind": "css",
+            "selector": "html > body:nth-of-type(1) > form:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(3) > td:nth-of-type(2) > input:nth-of-type(1)"
+          }
+        ],
+        "rationale": "primary: anchored (unlabelled control anchored to its visible row label); 1 verified fallback(s)"
+      },
+      "value": {
+        "param": "nickname"
+      }
+    },
+    {
+      "id": "s07",
+      "intent": "Enter the deposit",
+      "risk": "reversible",
+      "actor": "agent",
+      "expect": {
+        "all_of": [],
+        "description": ""
+      },
+      "timeout_ms": 10000,
+      "action": "fill",
+      "target": {
+        "frame": "main",
+        "description": "textbox next to 'Initial Deposit:'",
+        "strategies": [
+          {
+            "kind": "anchored",
+            "role": "textbox",
+            "anchor_text": "Initial Deposit:",
+            "nth": 0
+          },
+          {
+            "kind": "css",
+            "selector": "html > body:nth-of-type(1) > form:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(4) > td:nth-of-type(2) > input:nth-of-type(1)"
+          }
+        ],
+        "rationale": "primary: anchored (unlabelled control anchored to its visible row label); 1 verified fallback(s)"
+      },
+      "value": {
+        "param": "initial_deposit"
+      }
+    },
+    {
+      "id": "s08",
+      "intent": "Go to the review screen",
+      "risk": "reversible",
+      "actor": "agent",
+      "expect": {
+        "all_of": [
+          {
+            "kind": "text",
+            "text": "SUB0150",
+            "frame": "main"
+          },
+          {
+            "kind": "text",
+            "text": "REVIEW NEW SUB-ACCOUNT",
+            "frame": "main"
+          }
+        ],
+        "description": "frame main: SUB0150, REVIEW NEW SUB-ACCOUNT"
+      },
+      "timeout_ms": 10000,
+      "action": "click",
+      "target": {
+        "frame": "main",
+        "description": "Continue",
+        "strategies": [
+          {
+            "kind": "role",
+            "role": "button",
+            "name": "Continue",
+            "exact": true
+          },
+          {
+            "kind": "css",
+            "selector": "html > body:nth-of-type(1) > form:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(5) > td:nth-of-type(2) > input:nth-of-type(1)"
+          }
+        ],
+        "rationale": "primary: role (accessible role+name; survives layout and styling changes); 1 verified fallback(s)"
+      }
+    },
+    {
+      "id": "s09",
+      "intent": "Submit the new sub-account",
+      "risk": "irreversible",
+      "actor": "agent",
+      "expect": {
+        "all_of": [
+          {
+            "kind": "text",
+            "text": "SUB0300",
+            "frame": "main"
+          },
+          {
+            "kind": "text",
+            "text": "SUB-ACCOUNT CREATED",
+            "frame": "main"
+          },
+          {
+            "kind": "url",
+            "pattern": "/hc/SUB0200*",
+            "frame": "main"
+          }
+        ],
+        "description": "frame main: SUB0300, SUB-ACCOUNT CREATED"
+      },
+      "timeout_ms": 10000,
+      "action": "click",
+      "target": {
+        "frame": "main",
+        "description": "Submit",
+        "strategies": [
+          {
+            "kind": "role",
+            "role": "button",
+            "name": "Submit",
+            "exact": true
+          },
+          {
+            "kind": "css",
+            "selector": "html > body:nth-of-type(1) > form:nth-of-type(1) > input:nth-of-type(4)"
+          }
+        ],
+        "rationale": "primary: role (accessible role+name; survives layout and styling changes); 1 verified fallback(s)"
+      }
+    },
+    {
+      "id": "s10",
+      "intent": "Read confirmation",
+      "risk": "read",
+      "actor": "agent",
+      "expect": {
+        "all_of": [],
+        "description": ""
+      },
+      "timeout_ms": 10000,
+      "action": "extract",
+      "target": {
+        "frame": "main",
+        "description": "text after 'Confirmation #:'",
+        "strategies": [
+          {
+            "kind": "text",
+            "text": "Confirmation #:",
+            "exact": false
+          },
+          {
+            "kind": "css",
+            "selector": "html > body:nth-of-type(1) > b:nth-of-type(1)"
+          }
+        ],
+        "rationale": "primary: text (element whose text starts with the stable label before the value); 1 verified fallback(s)"
+      },
+      "output": "confirmation_number",
+      "parse": "string",
+      "pattern": "Confirmation\\ \\#:\\s*(.+)$"
+    }
+  ],
+  "success": {
+    "all_of": [
+      {
+        "kind": "text",
+        "text": "SUB0300",
+        "frame": "main"
+      },
+      {
+        "kind": "text",
+        "text": "SUB-ACCOUNT CREATED",
+        "frame": "main"
+      },
+      {
+        "kind": "url",
+        "pattern": "/hc/SUB0200*",
+        "frame": "main"
+      }
+    ],
+    "description": "final screen reached: Sub-account created"
+  },
+  "outcomes": [],
+  "provenance": {
+    "discovered_by": "scripted",
+    "run_id": "discover-20260930T065545Z-6e2aad",
+    "recorded_at": "2026-09-30T06:55:49+00:00",
+    "recorded_on_tenant": "riverbend",
+    "goal": "Open a new {{share_type}} sub-account for member {{member_id}} with nickname {{nickname}} and an initial deposit of {{initial_deposit}}, submit it, and read the confirmation number.",
+    "human_steps": 0
+  }
+}

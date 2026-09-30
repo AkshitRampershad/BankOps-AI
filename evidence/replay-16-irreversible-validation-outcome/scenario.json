@@ -1,0 +1,12 @@
+{
+  "scenario": "core rejects the deposit -> business outcome",
+  "tenant": "riverbend",
+  "fault_injected": null,
+  "status": "BUSINESS_OUTCOME",
+  "code": "VALIDATION_ERROR",
+  "outputs": {},
+  "recoveries": [],
+  "interventions": [],
+  "warnings": [],
+  "duration_ms": 2530
+}

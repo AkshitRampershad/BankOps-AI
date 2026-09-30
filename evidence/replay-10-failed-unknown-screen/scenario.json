@@ -1,0 +1,14 @@
+{
+  "scenario": "unknown interstitial, no human -> CHECKPOINT_TIMEOUT",
+  "tenant": "riverbend",
+  "fault_injected": {
+    "unknown_dialog_once": true
+  },
+  "status": "FAILED",
+  "code": "CHECKPOINT_TIMEOUT",
+  "outputs": {},
+  "recoveries": [],
+  "interventions": [],
+  "warnings": [],
+  "duration_ms": 12762
+}

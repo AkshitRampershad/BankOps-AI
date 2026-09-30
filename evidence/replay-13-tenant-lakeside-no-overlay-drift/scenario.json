@@ -1,0 +1,15 @@
+{
+  "scenario": "second tenant without overlay: drift detected, data never read positionally",
+  "tenant": "lakeside",
+  "fault_injected": null,
+  "status": "FAILED",
+  "code": "TARGET_NOT_FOUND",
+  "outputs": {},
+  "recoveries": [],
+  "interventions": [],
+  "warnings": [
+    "step s02: primary locator failed, matched by fallback 'css' (drift)",
+    "step s03: primary locator failed, matched by fallback 'css' (drift)"
+  ],
+  "duration_ms": 15948
+}

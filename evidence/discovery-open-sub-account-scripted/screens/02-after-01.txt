@@ -1,0 +1,18 @@
+== frame "banner" url=/banner title="banner"
+[1] cell "HERITAGE CORE RIVERBEND COMMUNITY CREDIT UNION" (row: User: «secret»)
+[2] cell "User: «secret»" (row: HERITAGE CORE RIVERBEND COMMUNITY CREDIT UNION)
+== frame "nav" url=/nav title="nav"
+[3] cell "▸"
+[4] link "Member Inquiry"
+[5] cell "▸"
+[6] link "Transaction History"
+[7] cell "▸"
+[8] link "Reports"
+[9] link "Sign Off"
+== frame "main" url=/hc/MBR0100 title="Member Inquiry"
+[10] cell "MBR0100" (row: MEMBER INQUIRY | HC 4.2.7)
+[11] cell "MEMBER INQUIRY" (row: MBR0100 | HC 4.2.7)
+[12] cell "HC 4.2.7" (row: MBR0100 | MEMBER INQUIRY)
+[13] cell "Member Number:"
+[14] textbox label="Member Number:" value=""
+[15] button "Inquire" label="Member Number:"

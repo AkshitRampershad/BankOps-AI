@@ -1,0 +1,12 @@
+{
+  "scenario": "discovery (scripted): Look up member {{member_id}} and read the current balance of their SHARE SAVINGS account.",
+  "status": "succeeded",
+  "code": null,
+  "reason": "Read the share savings balance from the member profile",
+  "planner": "scripted",
+  "usage": {
+    "input_tokens": 0,
+    "output_tokens": 0
+  },
+  "artifact": "artifacts/heritage_core.member.read_savings_balance/1.0.0.json"
+}

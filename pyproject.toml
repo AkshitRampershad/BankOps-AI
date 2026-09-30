@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cua"
+version = "0.1.0"
+description = "Computer-use automation: LLM discovery -> typed capability artifacts -> deterministic replay"
+requires-python = ">=3.11"
+dependencies = [
+  "playwright>=1.45",
+  "anthropic>=0.70",
+  "pydantic>=2.6",
+  "pyyaml>=6",
+  "aiohttp>=3.9",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "pytest-asyncio>=0.23"]
+
+[project.scripts]
+cua = "cua.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]

@@ -1,0 +1,11 @@
+- {tool: click, select: {role: link, name: Member Inquiry}, why: Open the member inquiry screen}
+- {tool: fill, select: {role: textbox, label: "Member Number:"}, param: member_id, why: Enter the member number}
+- {tool: click, select: {role: button, name: Inquire}, why: Run the inquiry}
+- {tool: click, select: {role: button, name: Open Sub-Account}, why: Start opening a sub-account}
+- {tool: select_option, select: {role: combobox, label: "Share Type:"}, param: share_type, why: Choose the share type}
+- {tool: fill, select: {role: textbox, label: "Nickname:"}, param: nickname, why: Enter the nickname}
+- {tool: fill, select: {role: textbox, label: "Initial Deposit:"}, param: initial_deposit, why: Enter the deposit}
+- {tool: click, select: {role: button, name: Continue}, why: Go to the review screen}
+- {tool: click, select: {role: button, name: Submit}, why: Submit the new sub-account}
+- {tool: extract, select: {role: text, name_prefix: "Confirmation #:"}, output_name: confirmation_number, type: string, description: Confirmation number of the new sub-account, why: Read confirmation}
+- {tool: done, summary: Sub-account created, success_text: SUB-ACCOUNT CREATED}

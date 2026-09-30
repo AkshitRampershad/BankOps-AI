@@ -1,0 +1,33 @@
+{
+  "run_id": "replay-20260930T065658Z-7a92a3",
+  "capability": "heritage_core.member.open_sub_account",
+  "version": "1.0.0",
+  "digest": "sha256:f6b94e77f483e9d5",
+  "tenant": "riverbend",
+  "status": "REJECTED",
+  "outputs": {},
+  "outcome": null,
+  "failure": {
+    "code": "NOT_APPROVED",
+    "message": "steps ['s09'] are irreversible: invoke an approved capability with allow_irreversible, or run attended with human escalation",
+    "step_id": null,
+    "step_intent": null,
+    "expected": null,
+    "observed": null,
+    "retryable": false,
+    "attempts": [],
+    "evidence": []
+  },
+  "recoveries": [],
+  "interventions": [],
+  "warnings": [],
+  "steps": [],
+  "duration_ms": 862,
+  "evidence_dir": "/home/user/Computer-Use-Automation-System/runs/_evidence/replay-20260930T065658Z-7a92a3",
+  "inputs": {
+    "member_id": "\u00abpii\u00bb",
+    "share_type": "HOLIDAY CLUB",
+    "nickname": "Gifts",
+    "initial_deposit": "40.00"
+  }
+}

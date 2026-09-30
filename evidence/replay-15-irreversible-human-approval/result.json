@@ -1,0 +1,127 @@
+{
+  "run_id": "replay-20260930T065659Z-11ed3c",
+  "capability": "heritage_core.member.open_sub_account",
+  "version": "1.0.0",
+  "digest": "sha256:f6b94e77f483e9d5",
+  "tenant": "riverbend",
+  "status": "SUCCEEDED",
+  "outputs": {
+    "confirmation_number": "SA70002"
+  },
+  "outcome": null,
+  "failure": null,
+  "recoveries": [],
+  "interventions": [
+    {
+      "id": "int-984e28",
+      "kind": "approval",
+      "reason": "approve irreversible step: Submit the new sub-account",
+      "step_id": "s09",
+      "operator": "op-jlee",
+      "resolution": "approve",
+      "human_actions": 0,
+      "note": "consent verified"
+    }
+  ],
+  "warnings": [],
+  "steps": [
+    {
+      "step_id": "s01",
+      "action": "click",
+      "status": "ok",
+      "strategy": "role",
+      "fallback": false,
+      "ms": 168,
+      "actor": "automation"
+    },
+    {
+      "step_id": "s02",
+      "action": "fill",
+      "status": "ok",
+      "strategy": "anchored",
+      "fallback": false,
+      "ms": 77,
+      "actor": "automation"
+    },
+    {
+      "step_id": "s03",
+      "action": "click",
+      "status": "ok",
+      "strategy": "role",
+      "fallback": false,
+      "ms": 128,
+      "actor": "automation"
+    },
+    {
+      "step_id": "s04",
+      "action": "click",
+      "status": "ok",
+      "strategy": "role",
+      "fallback": false,
+      "ms": 329,
+      "actor": "automation"
+    },
+    {
+      "step_id": "s05",
+      "action": "select",
+      "status": "ok",
+      "strategy": "anchored",
+      "fallback": false,
+      "ms": 59,
+      "actor": "automation"
+    },
+    {
+      "step_id": "s06",
+      "action": "fill",
+      "status": "ok",
+      "strategy": "anchored",
+      "fallback": false,
+      "ms": 40,
+      "actor": "automation"
+    },
+    {
+      "step_id": "s07",
+      "action": "fill",
+      "status": "ok",
+      "strategy": "anchored",
+      "fallback": false,
+      "ms": 45,
+      "actor": "automation"
+    },
+    {
+      "step_id": "s08",
+      "action": "click",
+      "status": "ok",
+      "strategy": "role",
+      "fallback": false,
+      "ms": 344,
+      "actor": "automation"
+    },
+    {
+      "step_id": "s09",
+      "action": "click",
+      "status": "ok",
+      "strategy": "role",
+      "fallback": false,
+      "ms": 650,
+      "actor": "automation"
+    },
+    {
+      "step_id": "s10",
+      "action": "extract",
+      "status": "ok",
+      "strategy": "text",
+      "fallback": false,
+      "ms": 50,
+      "actor": "automation"
+    }
+  ],
+  "duration_ms": 3165,
+  "evidence_dir": "/home/user/Computer-Use-Automation-System/runs/_evidence/replay-20260930T065659Z-11ed3c",
+  "inputs": {
+    "member_id": "\u00abpii\u00bb",
+    "share_type": "HOLIDAY CLUB",
+    "nickname": "Gifts",
+    "initial_deposit": "40.00"
+  }
+}

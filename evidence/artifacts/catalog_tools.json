@@ -1,0 +1,59 @@
+[
+  {
+    "name": "heritage_core__member__read_savings_balance",
+    "description": "Look up a credit union member by member number in Heritage Core and return the current balance of their SHARE SAVINGS account. Read-only.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "member_id": {
+          "type": "string",
+          "description": "Six-digit member number.",
+          "pattern": "^\\d{6}$"
+        }
+      },
+      "required": [
+        "member_id"
+      ],
+      "additionalProperties": false
+    }
+  },
+  {
+    "name": "heritage_core__member__open_sub_account",
+    "description": "Open a new share sub-account (holiday club, vacation club or extra savings) for a member with an initial deposit, and return the confirmation number. IRREVERSIBLE: creates the account and posts the deposit. IRREVERSIBLE: commits changes to the system of record; requires approval.",
+    "input_schema": {
+      "type": "object",
+      "properties": {
+        "member_id": {
+          "type": "string",
+          "description": "Six-digit member number.",
+          "pattern": "^\\d{6}$"
+        },
+        "share_type": {
+          "type": "string",
+          "description": "Share type of the new sub-account.",
+          "enum": [
+            "HOLIDAY CLUB",
+            "VACATION CLUB",
+            "EXTRA SAVINGS"
+          ]
+        },
+        "nickname": {
+          "type": "string",
+          "description": "Nickname shown on statements.",
+          "pattern": "^[A-Za-z0-9 ]{1,20}$"
+        },
+        "initial_deposit": {
+          "type": "string",
+          "description": "Initial deposit amount, 5.00 to 10000.00."
+        }
+      },
+      "required": [
+        "member_id",
+        "share_type",
+        "nickname",
+        "initial_deposit"
+      ],
+      "additionalProperties": false
+    }
+  }
+]

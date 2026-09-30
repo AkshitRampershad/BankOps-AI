@@ -1,0 +1,4 @@
+{"seq": 1, "t": 0.0, "ts": "2026-09-30T06:55:57.682+00:00", "run_id": "replay-20260930T065557Z-ee9721", "event": "session_started", "tenant": "riverbend", "product": "heritage_core", "version": "4.2.7", "policy": "heritage_core-member-services"}
+{"seq": 2, "t": 0.781, "ts": "2026-09-30T06:55:58.463+00:00", "run_id": "replay-20260930T065557Z-ee9721", "event": "replay_started", "capability": "heritage_core.member.read_savings_balance", "version": "1.0.0", "digest": "sha256:88e6ca503594609b", "status": "draft", "attended": true, "escalation": "fail"}
+{"seq": 3, "t": 0.782, "ts": "2026-09-30T06:55:58.463+00:00", "run_id": "replay-20260930T065557Z-ee9721", "event": "run_finished", "status": "REJECTED", "outcome": null, "failure": "INPUT_INVALID"}
+{"seq": 4, "t": 0.909, "ts": "2026-09-30T06:55:58.590+00:00", "run_id": "replay-20260930T065557Z-ee9721", "event": "session_closed"}

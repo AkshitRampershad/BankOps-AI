@@ -1,0 +1,8 @@
+# Deterministic stand-in for the model (pipeline tests / no-API-key runs). Elements are
+# chosen by role/name/label against the live observation, exactly like the model's refs.
+- {tool: click, select: {role: link, name: Member Inquiry}, why: Open the member inquiry screen from the menu}
+- {tool: fill, select: {role: textbox, label: "Member Number:"}, param: member_id, why: Enter the member number}
+- {tool: click, select: {role: button, name: Inquire}, why: Run the inquiry}
+- {tool: extract, select: {role: cell, row: SHARE SAVINGS, col: Balance}, output_name: savings_balance, type: money,
+   row_key: SHARE SAVINGS, description: Current balance of the member's SHARE SAVINGS account, why: Read the savings balance}
+- {tool: done, summary: Read the share savings balance from the member profile, success_text: MEMBER PROFILE}

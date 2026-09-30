@@ -1,0 +1,12 @@
+{
+  "scenario": "restricted account -> business outcome",
+  "tenant": "riverbend",
+  "fault_injected": null,
+  "status": "BUSINESS_OUTCOME",
+  "code": "ACCESS_DENIED",
+  "outputs": {},
+  "recoveries": [],
+  "interventions": [],
+  "warnings": [],
+  "duration_ms": 1747
+}

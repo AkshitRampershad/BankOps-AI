@@ -1,0 +1,90 @@
+{
+  "run_id": "replay-20260930T065626Z-5fa781",
+  "capability": "heritage_core.member.read_savings_balance",
+  "version": "1.0.0",
+  "digest": "sha256:88e6ca503594609b",
+  "tenant": "riverbend",
+  "status": "SUCCEEDED",
+  "outputs": {
+    "savings_balance": "1234.56"
+  },
+  "outcome": null,
+  "failure": null,
+  "recoveries": [],
+  "interventions": [
+    {
+      "id": "int-b9d1c0",
+      "kind": "stuck",
+      "reason": "CHECKPOINT_TIMEOUT: expected state did not appear",
+      "step_id": "s03",
+      "operator": "op-jlee",
+      "resolution": "resume",
+      "human_actions": 2,
+      "note": "dismissed compliance reminder"
+    }
+  ],
+  "warnings": [
+    "human resolved unknown state 'COMPLIANCE REMINDER'; proposed profile rule written to proposed_profile_rules.yaml"
+  ],
+  "steps": [
+    {
+      "step_id": "s01",
+      "action": "click",
+      "status": "ok",
+      "strategy": "role",
+      "fallback": false,
+      "ms": 167,
+      "actor": "automation"
+    },
+    {
+      "step_id": "s02",
+      "action": "fill",
+      "status": "ok",
+      "strategy": "anchored",
+      "fallback": false,
+      "ms": 66,
+      "actor": "automation"
+    },
+    {
+      "step_id": "s01",
+      "action": "click",
+      "status": "ok",
+      "strategy": "role",
+      "fallback": false,
+      "ms": 120,
+      "actor": "automation"
+    },
+    {
+      "step_id": "s02",
+      "action": "fill",
+      "status": "ok",
+      "strategy": "anchored",
+      "fallback": false,
+      "ms": 63,
+      "actor": "automation"
+    },
+    {
+      "step_id": "s03",
+      "action": "click",
+      "status": "ok",
+      "strategy": "role",
+      "fallback": false,
+      "ms": 95,
+      "actor": "automation"
+    },
+    {
+      "step_id": "s04",
+      "action": "extract",
+      "status": "ok",
+      "strategy": "table_cell",
+      "fallback": false,
+      "ms": 57,
+      "actor": "automation"
+    }
+  ],
+  "duration_ms": 13572,
+  "evidence_dir": "/home/user/Computer-Use-Automation-System/runs/_evidence/replay-20260930T065626Z-5fa781",
+  "inputs": {
+    "member_id": "\u00abpii\u00bb"
+  }
+}

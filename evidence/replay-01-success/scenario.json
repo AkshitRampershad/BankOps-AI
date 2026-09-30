@@ -1,0 +1,14 @@
+{
+  "scenario": "happy path",
+  "tenant": "riverbend",
+  "fault_injected": null,
+  "status": "SUCCEEDED",
+  "code": null,
+  "outputs": {
+    "savings_balance": "1234.56"
+  },
+  "recoveries": [],
+  "interventions": [],
+  "warnings": [],
+  "duration_ms": 1971
+}

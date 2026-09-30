@@ -1,0 +1,19 @@
+{
+  "scenario": "session expiry -> re-auth -> resync on checkpoints",
+  "tenant": "riverbend",
+  "fault_injected": {
+    "session_expire_once": true,
+    "path": "MBR0100"
+  },
+  "status": "SUCCEEDED",
+  "code": null,
+  "outputs": {
+    "savings_balance": "1234.56"
+  },
+  "recoveries": [
+    "SESSION_EXPIRED"
+  ],
+  "interventions": [],
+  "warnings": [],
+  "duration_ms": 2034
+}

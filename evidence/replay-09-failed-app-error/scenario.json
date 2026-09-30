@@ -1,0 +1,15 @@
+{
+  "scenario": "application error -> hard failure with evidence",
+  "tenant": "riverbend",
+  "fault_injected": {
+    "error_once": true,
+    "path": "MBR0100"
+  },
+  "status": "FAILED",
+  "code": "APP_ERROR",
+  "outputs": {},
+  "recoveries": [],
+  "interventions": [],
+  "warnings": [],
+  "duration_ms": 2529
+}

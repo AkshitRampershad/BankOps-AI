@@ -1,0 +1,12 @@
+{
+  "status": "succeeded",
+  "reason": "Sub-account created",
+  "artifact_path": "/home/user/Computer-Use-Automation-System/artifacts/heritage_core.member.open_sub_account/1.0.0.json",
+  "run_id": "discover-20260930T065545Z-6e2aad",
+  "evidence_dir": "/home/user/Computer-Use-Automation-System/runs/_evidence/discover-20260930T065545Z-6e2aad",
+  "steps": 10,
+  "usage": {
+    "input_tokens": 0,
+    "output_tokens": 0
+  }
+}

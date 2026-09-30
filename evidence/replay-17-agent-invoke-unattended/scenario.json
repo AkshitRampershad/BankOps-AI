@@ -1,0 +1,14 @@
+{
+  "scenario": "agent invokes approved capability, unattended",
+  "tenant": "riverbend",
+  "fault_injected": null,
+  "status": "SUCCEEDED",
+  "code": null,
+  "outputs": {
+    "savings_balance": "1234.56"
+  },
+  "recoveries": [],
+  "interventions": [],
+  "warnings": [],
+  "duration_ms": 2117
+}

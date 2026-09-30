@@ -1,0 +1,36 @@
+{
+  "run_id": "replay-20260930T065611Z-1259f1",
+  "capability": "heritage_core.member.read_savings_balance",
+  "version": "1.0.0",
+  "digest": "sha256:88e6ca503594609b",
+  "tenant": "riverbend",
+  "status": "FAILED",
+  "outputs": {},
+  "outcome": null,
+  "failure": {
+    "code": "APP_ERROR",
+    "message": "The application raised an internal error. HC-E999 UNEXPECTED APPLICATION ERROR",
+    "step_id": "s01",
+    "step_intent": "Open the member inquiry screen from the menu",
+    "expected": "text 'MBR0100' in frame main; text 'MEMBER INQUIRY' in frame main; url /hc/MBR0100*",
+    "observed": "[banner] HERITAGE CORE RIVERBEND COMMUNITY CREDIT UNION User: \u00absecret\u00bb || [nav] \u25b8 Member Inquiry \u25b8 Transaction History \u25b8 Reports Sign Off || [main] SYS9999 APPLICATION ERROR HC 4.2.7 HC-E999 UNEXPECTED APPLICATION ERROR. CONTACT SUPPORT. at HC.MBR.Dispatch(line 4411)",
+    "retryable": true,
+    "attempts": [],
+    "evidence": [
+      "screens/01-failure-app_error.png",
+      "dom/01-failure-app_error/frame0-top.html",
+      "dom/01-failure-app_error/frame1-banner.html",
+      "dom/01-failure-app_error/frame2-nav.html",
+      "dom/01-failure-app_error/frame3-main.html"
+    ]
+  },
+  "recoveries": [],
+  "interventions": [],
+  "warnings": [],
+  "steps": [],
+  "duration_ms": 2529,
+  "evidence_dir": "/home/user/Computer-Use-Automation-System/runs/_evidence/replay-20260930T065611Z-1259f1",
+  "inputs": {
+    "member_id": "\u00abpii\u00bb"
+  }
+}

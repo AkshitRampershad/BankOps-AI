@@ -1,0 +1,15 @@
+# A second institution running the same vendor product, configured differently.
+# The overlay maps the recorded (base) vocabulary to this tenant's labels, so the
+# riverbend-recorded capability replays here without re-recording.
+id: lakeside
+product: heritage_core
+product_version: 4.3.1
+base_url: http://127.0.0.1:8766
+policy: heritage_core
+secrets:
+  heritage_core.username: HC_USERNAME
+  heritage_core.password: HC_PASSWORD
+text_aliases:
+  "Member Number:": "Account No.:"
+  "Inquire": "Search"
+  "Balance": "Current Bal"

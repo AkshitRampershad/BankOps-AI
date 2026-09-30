@@ -1,0 +1,14 @@
+{
+  "scenario": "same artifact, different input",
+  "tenant": "riverbend",
+  "fault_injected": null,
+  "status": "SUCCEEDED",
+  "code": null,
+  "outputs": {
+    "savings_balance": "58002.10"
+  },
+  "recoveries": [],
+  "interventions": [],
+  "warnings": [],
+  "duration_ms": 1919
+}

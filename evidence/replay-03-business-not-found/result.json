@@ -1,0 +1,45 @@
+{
+  "run_id": "replay-20260930T065553Z-a3ad93",
+  "capability": "heritage_core.member.read_savings_balance",
+  "version": "1.0.0",
+  "digest": "sha256:88e6ca503594609b",
+  "tenant": "riverbend",
+  "status": "BUSINESS_OUTCOME",
+  "outputs": {},
+  "outcome": {
+    "code": "RECORD_NOT_FOUND",
+    "message": "The core system has no record for the requested key.",
+    "detail": "NO RECORD FOUND FOR MEMBER \u00abpii:member_id\u00bb",
+    "step_id": "s03",
+    "rule": "record_not_found"
+  },
+  "failure": null,
+  "recoveries": [],
+  "interventions": [],
+  "warnings": [],
+  "steps": [
+    {
+      "step_id": "s01",
+      "action": "click",
+      "status": "ok",
+      "strategy": "role",
+      "fallback": false,
+      "ms": 186,
+      "actor": "automation"
+    },
+    {
+      "step_id": "s02",
+      "action": "fill",
+      "status": "ok",
+      "strategy": "anchored",
+      "fallback": false,
+      "ms": 83,
+      "actor": "automation"
+    }
+  ],
+  "duration_ms": 1907,
+  "evidence_dir": "/home/user/Computer-Use-Automation-System/runs/_evidence/replay-20260930T065553Z-a3ad93",
+  "inputs": {
+    "member_id": "\u00abpii\u00bb"
+  }
+}

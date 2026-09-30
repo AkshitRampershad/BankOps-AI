@@ -1,0 +1,132 @@
+# App profile for the "Heritage Core" vendor product.
+# Written once per product and shared by every tenant and every capability on it:
+# how to sign in, which screens are known interstitials / errors / business outcomes,
+# and which labels mark PII. Capabilities never repeat this knowledge.
+product: heritage_core
+description: Heritage Core member services — legacy frameset UI, table layout, no test ids.
+
+session_check:
+  description: Signed-in frameset with navigation menu is on screen
+  all_of:
+    - {kind: text, frame: nav, text: "Member Inquiry"}
+
+auth:
+  expect:
+    description: Signed-in frameset with navigation menu is on screen
+    all_of:
+      - {kind: text, frame: nav, text: "Member Inquiry"}
+  steps:
+    - id: s01
+      action: navigate
+      intent: Open the sign-on page
+      path: /login
+      expect: {all_of: [{kind: url, pattern: "/login*"}]}
+    - id: s02
+      action: fill
+      intent: Enter operator user id
+      target:
+        description: User ID field
+        strategies: [{kind: anchored, role: textbox, anchor_text: "User ID:"}]
+      value: {secret: heritage_core.username}
+    - id: s03
+      action: fill
+      intent: Enter operator password
+      target:
+        description: Password field
+        strategies: [{kind: anchored, role: textbox, anchor_text: "Password:"}]
+      value: {secret: heritage_core.password}
+    - id: s04
+      action: click
+      intent: Sign on
+      target:
+        description: Sign On button
+        strategies: [{kind: role, role: button, name: "Sign On"}]
+      expect: {all_of: [{kind: text, frame: nav, text: "Member Inquiry"}]}
+
+# In-frame re-authentication after "SESSION EXPIRED". The app then lands on the
+# inquiry screen, not where we were — replay re-synchronises on step checkpoints.
+reauth:
+  expect:
+    description: Main frame is back on an application screen
+    all_of:
+      - {kind: url, frame: main, pattern: "/hc/MBR0100*"}
+  steps:
+    - id: s01
+      action: fill
+      intent: Re-enter operator user id
+      target:
+        frame: main
+        description: User ID field
+        strategies: [{kind: anchored, role: textbox, anchor_text: "User ID:"}]
+      value: {secret: heritage_core.username}
+    - id: s02
+      action: fill
+      intent: Re-enter operator password
+      target:
+        frame: main
+        description: Password field
+        strategies: [{kind: anchored, role: textbox, anchor_text: "Password:"}]
+      value: {secret: heritage_core.password}
+    - id: s03
+      action: click
+      intent: Sign on again
+      target:
+        frame: main
+        description: Sign On button
+        strategies: [{kind: role, role: button, name: "Sign On"}]
+
+outcomes:
+  # --- recoverable: handle and continue --------------------------------------
+  - id: session_expired
+    kind: recoverable
+    code: SESSION_EXPIRED
+    when: {kind: text, frame: main, text: "SESSION EXPIRED"}
+    message: The application session expired; re-authenticating.
+    recovery: {kind: reauth, max_attempts: 1}
+  - id: system_notice
+    kind: recoverable
+    code: SYSTEM_NOTICE
+    when: {kind: text, frame: main, text: "SYSTEM NOTICE"}
+    message: A system notice interstitial was shown and acknowledged.
+    recovery:
+      kind: click
+      max_attempts: 3
+      target:
+        frame: main
+        description: Acknowledge button
+        strategies: [{kind: role, role: button, name: "Acknowledge"}]
+  # --- business outcomes: legitimate answers for the caller --------------------
+  - id: record_not_found
+    kind: business
+    code: RECORD_NOT_FOUND
+    when: {kind: text, frame: main, text: "NO RECORD FOUND"}
+    capture: '\*\*\*\s*(NO RECORD FOUND[^*]*?)\s*\*\*\*'
+    message: The core system has no record for the requested key.
+  - id: access_denied
+    kind: business
+    code: ACCESS_DENIED
+    when: {kind: text, frame: main, text: "SEC-403"}
+    capture: '(SEC-403[^.]*)'
+    message: The operator is not permitted to view this record (restricted account).
+  - id: member_number_invalid
+    kind: business
+    code: VALIDATION_ERROR
+    when: {kind: text, frame: main, text: "MBR-101"}
+    capture: '(MBR-101[^\n]*)'
+    message: The core system rejected the member number format.
+  - id: sub_account_invalid
+    kind: business
+    code: VALIDATION_ERROR
+    when: {kind: text, frame: main, text: "SUB-2"}
+    capture: '(SUB-2\d\d[^\n]*)'
+    message: The core system rejected the sub-account request.
+  # --- hard failures: stop with a debuggable error ------------------------------
+  - id: application_error
+    kind: failure
+    code: APP_ERROR
+    when: {kind: text, frame: main, text: "APPLICATION ERROR"}
+    capture: '(HC-E\d+[^.]*)'
+    message: The application raised an internal error.
+    retryable: true
+
+pii_labels: ["Name:", "SSN:", "Date of Birth:", "Phone:", "Address:", "Member No.:"]

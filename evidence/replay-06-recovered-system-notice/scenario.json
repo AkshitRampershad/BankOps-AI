@@ -1,0 +1,19 @@
+{
+  "scenario": "interstitial notice acknowledged via profile rule",
+  "tenant": "riverbend",
+  "fault_injected": {
+    "notice_once": true,
+    "path": "MBR0100"
+  },
+  "status": "SUCCEEDED",
+  "code": null,
+  "outputs": {
+    "savings_balance": "1234.56"
+  },
+  "recoveries": [
+    "SYSTEM_NOTICE"
+  ],
+  "interventions": [],
+  "warnings": [],
+  "duration_ms": 2039
+}

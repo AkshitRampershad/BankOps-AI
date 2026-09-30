@@ -1,0 +1,9 @@
+# Base tenant: the institution the capabilities were recorded on.
+id: riverbend
+product: heritage_core
+product_version: 4.2.7
+base_url: http://127.0.0.1:8765
+policy: heritage_core
+secrets:
+  heritage_core.username: HC_USERNAME
+  heritage_core.password: HC_PASSWORD

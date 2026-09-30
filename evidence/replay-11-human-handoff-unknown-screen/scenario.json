@@ -1,0 +1,20 @@
+{
+  "scenario": "unknown interstitial -> operator takes the live session -> resume",
+  "tenant": "riverbend",
+  "fault_injected": {
+    "unknown_dialog_once": true
+  },
+  "status": "SUCCEEDED",
+  "code": null,
+  "outputs": {
+    "savings_balance": "1234.56"
+  },
+  "recoveries": [],
+  "interventions": [
+    "stuck:resume"
+  ],
+  "warnings": [
+    "human resolved unknown state 'COMPLIANCE REMINDER'; proposed profile rule written to proposed_profile_rules.yaml"
+  ],
+  "duration_ms": 13572
+}

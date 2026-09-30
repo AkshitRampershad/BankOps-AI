@@ -1,0 +1,27 @@
+- id: proposed_compliance_reminder
+  kind: recoverable
+  code: COMPLIANCE_REMINDER
+  when:
+    kind: text
+    text: COMPLIANCE REMINDER
+    frame: main
+  message: 'Proposed from intervention int-b9d1c0 by op-jlee: dismissed compliance
+    reminder'
+  recovery:
+    kind: click
+    target:
+      frame: main
+      description: Remind Me Later
+      strategies:
+      - kind: role
+        role: button
+        name: Remind Me Later
+        exact: true
+      - kind: css
+        selector: html > body:nth-of-type(1) > table:nth-of-type(2) > tbody:nth-of-type(1)
+          > tr:nth-of-type(1) > td:nth-of-type(1) > form:nth-of-type(1) > input:nth-of-type(1)
+      rationale: 'primary: role (accessible role+name; survives layout and styling
+        changes); 1 verified fallback(s)'
+    backoff_ms: 1000
+    max_attempts: 2
+  retryable: false

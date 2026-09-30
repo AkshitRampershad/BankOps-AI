@@ -1,0 +1,30 @@
+{
+  "run_id": "replay-20260930T065557Z-ee9721",
+  "capability": "heritage_core.member.read_savings_balance",
+  "version": "1.0.0",
+  "digest": "sha256:88e6ca503594609b",
+  "tenant": "riverbend",
+  "status": "REJECTED",
+  "outputs": {},
+  "outcome": null,
+  "failure": {
+    "code": "INPUT_INVALID",
+    "message": "input 'member_id' does not match pattern ^\\d{6}$",
+    "step_id": null,
+    "step_intent": null,
+    "expected": null,
+    "observed": null,
+    "retryable": false,
+    "attempts": [],
+    "evidence": []
+  },
+  "recoveries": [],
+  "interventions": [],
+  "warnings": [],
+  "steps": [],
+  "duration_ms": 781,
+  "evidence_dir": "/home/user/Computer-Use-Automation-System/runs/_evidence/replay-20260930T065557Z-ee9721",
+  "inputs": {
+    "member_id": "\u00abpii\u00bb"
+  }
+}

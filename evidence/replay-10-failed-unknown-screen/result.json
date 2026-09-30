@@ -1,0 +1,55 @@
+{
+  "run_id": "replay-20260930T065613Z-698d91",
+  "capability": "heritage_core.member.read_savings_balance",
+  "version": "1.0.0",
+  "digest": "sha256:88e6ca503594609b",
+  "tenant": "riverbend",
+  "status": "FAILED",
+  "outputs": {},
+  "outcome": null,
+  "failure": {
+    "code": "CHECKPOINT_TIMEOUT",
+    "message": "expected state did not appear",
+    "step_id": "s03",
+    "step_intent": "Run the inquiry",
+    "expected": "text 'MBR0200' in frame main; text 'MEMBER PROFILE' in frame main",
+    "observed": "[banner] HERITAGE CORE RIVERBEND COMMUNITY CREDIT UNION User: \u00absecret\u00bb || [nav] \u25b8 Member Inquiry \u25b8 Transaction History \u25b8 Reports Sign Off || [main] TRN9000 COMPLIANCE REMINDER HC 4.2.7 ANNUAL BSA/AML TRAINING IS DUE IN 3 DAYS.",
+    "retryable": false,
+    "attempts": [],
+    "evidence": [
+      "screens/01-failure-checkpoint_timeout.png",
+      "dom/01-failure-checkpoint_timeout/frame0-top.html",
+      "dom/01-failure-checkpoint_timeout/frame1-banner.html",
+      "dom/01-failure-checkpoint_timeout/frame2-nav.html",
+      "dom/01-failure-checkpoint_timeout/frame3-main.html"
+    ]
+  },
+  "recoveries": [],
+  "interventions": [],
+  "warnings": [],
+  "steps": [
+    {
+      "step_id": "s01",
+      "action": "click",
+      "status": "ok",
+      "strategy": "role",
+      "fallback": false,
+      "ms": 157,
+      "actor": "automation"
+    },
+    {
+      "step_id": "s02",
+      "action": "fill",
+      "status": "ok",
+      "strategy": "anchored",
+      "fallback": false,
+      "ms": 70,
+      "actor": "automation"
+    }
+  ],
+  "duration_ms": 12762,
+  "evidence_dir": "/home/user/Computer-Use-Automation-System/runs/_evidence/replay-20260930T065613Z-698d91",
+  "inputs": {
+    "member_id": "\u00abpii\u00bb"
+  }
+}

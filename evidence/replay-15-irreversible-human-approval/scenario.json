@@ -1,0 +1,16 @@
+{
+  "scenario": "irreversible step approved by an operator",
+  "tenant": "riverbend",
+  "fault_injected": null,
+  "status": "SUCCEEDED",
+  "code": null,
+  "outputs": {
+    "confirmation_number": "SA70002"
+  },
+  "recoveries": [],
+  "interventions": [
+    "approval:approve"
+  ],
+  "warnings": [],
+  "duration_ms": 3165
+}

@@ -1,0 +1,12 @@
+{
+  "scenario": "irreversible capability without approval: rejected before touching the UI",
+  "tenant": "riverbend",
+  "fault_injected": null,
+  "status": "REJECTED",
+  "code": "NOT_APPROVED",
+  "outputs": {},
+  "recoveries": [],
+  "interventions": [],
+  "warnings": [],
+  "duration_ms": 862
+}

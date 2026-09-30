@@ -1,0 +1,16 @@
+# Guardrail policy for agents operating Heritage Core.
+name: heritage_core-member-services
+# Filled from the tenant's base URL at load time; nothing else is reachable.
+allowed_origins: []
+allowed_paths: ["/", "/login", "/banner", "/nav", "/hc/*"]
+# Operator-only and out-of-scope functions. Enforced at the network layer too,
+# so a click on a link to these is blocked even if the agent tries.
+denied_paths: ["/__admin/*", "/signoff", "/hc/TRN*"]
+allowed_actions: [navigate, click, fill, select, press, extract]
+# Controls whose activation commits to the system of record.
+irreversible_controls: ['^submit$', '^post\b', 'delete', 'transfer', '^confirm', 'approve', 'close account', 'withdraw']
+# require_approval: pause and route an approval request to a human (default);
+# block: refuse outright.
+irreversible_handling: require_approval
+max_steps: 25
+max_seconds: 300

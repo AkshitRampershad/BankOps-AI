@@ -1,0 +1,12 @@
+{
+  "scenario": "discovery (scripted): Open a new {{share_type}} sub-account for member {{member_id}} with nickname {{nickname}} and an initial deposit of {{initial_deposit}}, submit it, and read the confirmation number.",
+  "status": "succeeded",
+  "code": null,
+  "reason": "Sub-account created",
+  "planner": "scripted",
+  "usage": {
+    "input_tokens": 0,
+    "output_tokens": 0
+  },
+  "artifact": "artifacts/heritage_core.member.open_sub_account/1.0.0.json"
+}

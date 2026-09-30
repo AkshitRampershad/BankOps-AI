@@ -1,0 +1,18 @@
+{
+  "scenario": "same artifact on a second tenant via overlay",
+  "tenant": "lakeside",
+  "fault_injected": null,
+  "status": "SUCCEEDED",
+  "code": null,
+  "outputs": {
+    "savings_balance": "1234.56"
+  },
+  "recoveries": [],
+  "interventions": [],
+  "warnings": [
+    "alias 'Balance' -> 'Current Bal'",
+    "alias 'Inquire' -> 'Search'",
+    "alias 'Member Number:' -> 'Account No.:'"
+  ],
+  "duration_ms": 1959
+}

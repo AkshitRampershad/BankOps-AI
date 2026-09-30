@@ -1,0 +1,219 @@
+{
+  "schema": "cua.capability/v1",
+  "id": "heritage_core.member.read_savings_balance",
+  "version": "1.0.0",
+  "status": "draft",
+  "title": "Read a member's share savings balance",
+  "description": "Look up a credit union member by member number in Heritage Core and return the current balance of their SHARE SAVINGS account. Read-only.",
+  "app": {
+    "product": "heritage_core",
+    "versions": ">=4.2,<5",
+    "surface": "legacy_web",
+    "entry": "/",
+    "requires_auth": true
+  },
+  "inputs": [
+    {
+      "name": "member_id",
+      "type": "string",
+      "description": "Six-digit member number.",
+      "required": true,
+      "pattern": "^\\d{6}$",
+      "classification": "pii"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "savings_balance",
+      "type": "money",
+      "description": "Current balance of the member's SHARE SAVINGS account",
+      "classification": "internal",
+      "nullable": false
+    }
+  ],
+  "risk": "read",
+  "steps": [
+    {
+      "id": "s01",
+      "intent": "Open the member inquiry screen from the menu",
+      "risk": "reversible",
+      "actor": "agent",
+      "expect": {
+        "all_of": [
+          {
+            "kind": "text",
+            "text": "MBR0100",
+            "frame": "main"
+          },
+          {
+            "kind": "text",
+            "text": "MEMBER INQUIRY",
+            "frame": "main"
+          },
+          {
+            "kind": "url",
+            "pattern": "/hc/MBR0100*",
+            "frame": "main"
+          }
+        ],
+        "description": "frame main: MBR0100, MEMBER INQUIRY"
+      },
+      "timeout_ms": 10000,
+      "action": "click",
+      "target": {
+        "frame": "nav",
+        "description": "Member Inquiry",
+        "strategies": [
+          {
+            "kind": "role",
+            "role": "link",
+            "name": "Member Inquiry",
+            "exact": true
+          },
+          {
+            "kind": "text",
+            "text": "Member Inquiry",
+            "exact": true
+          },
+          {
+            "kind": "css",
+            "selector": "html > body:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(1) > td:nth-of-type(1) > a:nth-of-type(1)"
+          }
+        ],
+        "rationale": "primary: role (accessible role+name; survives layout and styling changes); 2 verified fallback(s)"
+      }
+    },
+    {
+      "id": "s02",
+      "intent": "Enter the member number",
+      "risk": "reversible",
+      "actor": "agent",
+      "expect": {
+        "all_of": [],
+        "description": ""
+      },
+      "timeout_ms": 10000,
+      "action": "fill",
+      "target": {
+        "frame": "main",
+        "description": "textbox next to 'Member Number:'",
+        "strategies": [
+          {
+            "kind": "anchored",
+            "role": "textbox",
+            "anchor_text": "Member Number:",
+            "nth": 0
+          },
+          {
+            "kind": "css",
+            "selector": "html > body:nth-of-type(1) > form:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(1) > td:nth-of-type(2) > input:nth-of-type(1)"
+          }
+        ],
+        "rationale": "primary: anchored (unlabelled control anchored to its visible row label); 1 verified fallback(s)"
+      },
+      "value": {
+        "param": "member_id"
+      }
+    },
+    {
+      "id": "s03",
+      "intent": "Run the inquiry",
+      "risk": "reversible",
+      "actor": "agent",
+      "expect": {
+        "all_of": [
+          {
+            "kind": "text",
+            "text": "MBR0200",
+            "frame": "main"
+          },
+          {
+            "kind": "text",
+            "text": "MEMBER PROFILE",
+            "frame": "main"
+          }
+        ],
+        "description": "frame main: MBR0200, MEMBER PROFILE"
+      },
+      "timeout_ms": 10000,
+      "action": "click",
+      "target": {
+        "frame": "main",
+        "description": "Inquire",
+        "strategies": [
+          {
+            "kind": "role",
+            "role": "button",
+            "name": "Inquire",
+            "exact": true
+          },
+          {
+            "kind": "anchored",
+            "role": "button",
+            "anchor_text": "Member Number:",
+            "nth": 0
+          },
+          {
+            "kind": "css",
+            "selector": "html > body:nth-of-type(1) > form:nth-of-type(1) > table:nth-of-type(1) > tbody:nth-of-type(1) > tr:nth-of-type(1) > td:nth-of-type(3) > input:nth-of-type(1)"
+          }
+        ],
+        "rationale": "primary: role (accessible role+name; survives layout and styling changes); 2 verified fallback(s)"
+      }
+    },
+    {
+      "id": "s04",
+      "intent": "Read the savings balance",
+      "risk": "read",
+      "actor": "agent",
+      "expect": {
+        "all_of": [],
+        "description": ""
+      },
+      "timeout_ms": 10000,
+      "action": "extract",
+      "target": {
+        "frame": "main",
+        "description": "Balance cell",
+        "strategies": [
+          {
+            "kind": "table_cell",
+            "row_key": "SHARE SAVINGS",
+            "column": "Balance"
+          },
+          {
+            "kind": "css",
+            "selector": "html > body:nth-of-type(1) > table:nth-of-type(3) > tbody:nth-of-type(1) > tr:nth-of-type(2) > td:nth-of-type(3)"
+          }
+        ],
+        "rationale": "primary: table_cell (table cell by row key 'SHARE SAVINGS' and column header; independent of row order); 1 verified fallback(s)"
+      },
+      "output": "savings_balance",
+      "parse": "money"
+    }
+  ],
+  "success": {
+    "all_of": [
+      {
+        "kind": "text",
+        "text": "MBR0200",
+        "frame": "main"
+      },
+      {
+        "kind": "text",
+        "text": "MEMBER PROFILE",
+        "frame": "main"
+      }
+    ],
+    "description": "final screen reached: Read the share savings balance from the member profile"
+  },
+  "outcomes": [],
+  "provenance": {
+    "discovered_by": "scripted",
+    "run_id": "discover-20260930T065542Z-0ccd0b",
+    "recorded_at": "2026-09-30T06:55:44+00:00",
+    "recorded_on_tenant": "riverbend",
+    "goal": "Look up member {{member_id}} and read the current balance of their SHARE SAVINGS account.",
+    "human_steps": 0
+  }
+}

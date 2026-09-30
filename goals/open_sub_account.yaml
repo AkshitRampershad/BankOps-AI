@@ -1,0 +1,32 @@
+capability_id: heritage_core.member.open_sub_account
+title: Open a new sub-account for a member
+description: >-
+  Open a new share sub-account (holiday club, vacation club or extra savings) for a member
+  with an initial deposit, and return the confirmation number. IRREVERSIBLE: creates the
+  account and posts the deposit.
+tenant: riverbend
+goal: >-
+  Open a new {{share_type}} sub-account for member {{member_id}} with nickname {{nickname}} and an
+  initial deposit of {{initial_deposit}}, submit it, and read the confirmation number.
+entry: /
+inputs:
+  - name: member_id
+    type: string
+    pattern: '^\d{6}$'
+    classification: pii
+    description: Six-digit member number.
+    value: "100377"
+  - name: share_type
+    type: enum
+    enum: [HOLIDAY CLUB, VACATION CLUB, EXTRA SAVINGS]
+    description: Share type of the new sub-account.
+    value: VACATION CLUB
+  - name: nickname
+    type: string
+    pattern: '^[A-Za-z0-9 ]{1,20}$'
+    description: Nickname shown on statements.
+    value: Summer Trip
+  - name: initial_deposit
+    type: money
+    description: Initial deposit amount, 5.00 to 10000.00.
+    value: "250.00"

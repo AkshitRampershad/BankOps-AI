@@ -1,0 +1,18 @@
+{
+  "scenario": "slow responses waited on by checkpoint, not sleeps",
+  "tenant": "riverbend",
+  "fault_injected": {
+    "slow_seconds": 3,
+    "slow_count": 2,
+    "path": "MBR0100"
+  },
+  "status": "SUCCEEDED",
+  "code": null,
+  "outputs": {
+    "savings_balance": "1234.56"
+  },
+  "recoveries": [],
+  "interventions": [],
+  "warnings": [],
+  "duration_ms": 7936
+}
