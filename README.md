@@ -4,7 +4,7 @@ An LLM figures out a task once on a legacy back-office UI. The run is recorded a
 
 > The model discovers. The artifact becomes a reusable capability. Deterministic replay is how the agent invokes it.
 
-The design write-up is in **[REPORT.md](REPORT.md)**. Evidence from the runs is in **[evidence/](evidence/INDEX.md)**.
+The design write-up is in **[REPORT.md](REPORT.md)**. Evidence from the runs is in **[evidence/](evidence/INDEX.md)**. A one-page overview is at **https://akshitrampershad.github.io/Computer-Use-Automation-System/** (source: `docs/index.html`).
 
 The target is **Heritage Core** (`demo_app/`), a deliberately hostile local stand-in for a core-banking back office:
 
