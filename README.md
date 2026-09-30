@@ -1,6 +1,6 @@
-# Computer-Use Automation System
+# Computer-Use Automation System for Legacy Banking
 
-An LLM figures out a task once on a legacy back-office UI. The run is recorded as a **typed, versioned capability artifact**, and that artifact is **replayed deterministically, with no model in the loop**. Replay returns a structured result that separates success, business outcomes and failures. A human can take over the **same live session** when automation gets stuck or when an irreversible step needs approval.
+Built an AI-powered computer-use system that learns workflows from legacy banking UIs using Claude, converts successful interactions into versioned capability artifacts, and deterministically replays them without an LLM. Includes policy-controlled execution, fault recovery, tenant-aware UI adaptation, structured outcomes, and human-in-the-loop takeover for ambiguous or irreversible actions.
 
 > The model discovers. The artifact becomes a reusable capability. Deterministic replay is how the agent invokes it.
 
